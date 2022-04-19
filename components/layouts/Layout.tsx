@@ -1,14 +1,19 @@
 import Head from "next/head"
-import {FC, PropsWithChildren} from 'react';
+import {FC, ReactNode} from 'react';
 
-export const Layout:FC<PropsWithChildren<{}>> = ({ children }) => {
+type Props = {
+    children: ReactNode;
+    title?: string;
+}
+
+export const Layout:FC<Props> = ({ children, title }) => {
   return (
     <>
         <Head>
-            <title>Pokemon App</title>
+            <title>{ title || 'PokemonApp' }</title>
             <meta name="author" content="Sergio Madrigal" />
-            <meta name="description" content="Informacion sobre el pokemon XXXXX" />
-            <meta name="keywords" content="XXX, pokemon, pokedex" />
+            <meta name="description" content={`Informacion sobre el pokemon ${title}`} />
+            <meta name="keywords" content={`${title}, pokemon, pokedex`} />
         </Head>
 
         {/* Nabar */}
