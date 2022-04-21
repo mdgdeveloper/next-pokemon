@@ -1,26 +1,29 @@
 import Head from "next/head"
-import {FC, ReactNode} from 'react';
+import { FC, ReactNode } from 'react';
+import { Navbar } from "../ui";
 
 type Props = {
-    children: ReactNode;
-    title?: string;
+  children: ReactNode;
+  title?: string;
 }
 
-export const Layout:FC<Props> = ({ children, title }) => {
+export const Layout: FC<Props> = ({ children, title }) => {
   return (
     <>
-        <Head>
-            <title>{ title || 'PokemonApp' }</title>
-            <meta name="author" content="Sergio Madrigal" />
-            <meta name="description" content={`Informacion sobre el pokemon ${title}`} />
-            <meta name="keywords" content={`${title}, pokemon, pokedex`} />
-        </Head>
+      <Head>
+        <title>{title || 'PokemonApp'}</title>
+        <meta name="author" content="Sergio Madrigal" />
+        <meta name="description" content={`Informacion sobre el pokemon ${title}`} />
+        <meta name="keywords" content={`${title}, pokemon, pokedex`} />
+      </Head>
 
-        {/* Nabar */}
+      <Navbar />
 
-        <main>
-            {children}
-        </main>
+      <main style={{
+        padding: "0px 20px"
+      }}>
+        {children}
+      </main>
     </>
   )
 }
